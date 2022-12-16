@@ -8,6 +8,8 @@ const app = express();
 const dbConnect = require('./config/db');
 dbConnect();
 
+app.use(express.json());
+
 app.use('/users', require('./routes/userRoutes'))
 
 app.get('/', (req, res) => {

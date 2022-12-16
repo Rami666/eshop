@@ -1,16 +1,14 @@
-const User = require('../models/User');
-
+const User = require("../models/User");
 
 module.exports.register = async (req, res) => {
+  try {
 
-    try {
+    console.log("hello from register", req.body);
+    await User.create(req.body);
 
-User.create(req.body);
-res.send({success: true, message: "User registered successfully"}) 
-        
-    } catch (error) {
-        console.log("Register Error", error.message);
-        res.send({success: false, error: error.message})
-    }
-
-}
+    res.send({ success: true, message: "User registered successfully" });
+  } catch (error) {
+    console.log("Register Error", error.message);
+    res.send({ success: false, error: error.message });
+  }
+};
